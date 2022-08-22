@@ -1,0 +1,39 @@
+// ATLProject.idl : IDL source for ATLProject
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ATLProject.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(a08e76d7-424c-49ff-ab1e-51e8e35d6680),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ICircle : IDispatch
+{
+	[propget, id(1)] HRESULT Radius([out, retval] DOUBLE* pVal);
+	[propput, id(1)] HRESULT Radius([in] DOUBLE newVal);
+	[id(2)] HRESULT GetArea(DOUBLE* area);
+};
+[
+	uuid(ae193b62-7f59-4e25-bbac-28ed9b0564a5),
+	version(1.0),
+]
+library ATLProjectLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(04544e22-5450-4d9d-981b-1142b302d05b)
+	]
+	coclass Circle
+	{
+		[default] interface ICircle;
+	};
+};
+
+import "shobjidl.idl";
